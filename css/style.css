@@ -9,3 +9,24 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 250px;
+}
+
+h1 {
+  color: rgb(70, 115, 127);
+}
+
+#numbers {
+  color: brown;
+  font-size: 45px;
+}
