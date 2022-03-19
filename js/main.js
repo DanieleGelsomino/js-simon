@@ -11,9 +11,9 @@ console.log("JS OK!");
     da indovinare sono stati individuati.
 */
 
+//******* FUNZIONI *******//
 function generateRandomNumber(min, max) {
   const range = max - min + 1;
-
   return Math.floor(Math.random() * range) + min;
 }
 
@@ -22,16 +22,27 @@ function askToUserSequenceNumbers() {
     const askUser = parseInt(
       prompt("inserisci in ordine la sequenza dei numeri")
     );
+    /*
+     se i numeri inseriti non sono inclusi nell'array,
+     li aggiungerà nei numeri errati
+     altrimenti nei numeri indovinati
+     */
     if (!simonNumber.includes(askUser)) {
       numeriErrati.push(askUser);
       console.log("i numeri errati " + numeriErrati);
-      const numbersMatched = document.getElementById("not-matched");
-      numbersMatched.innerText = `Non hai indovinato : ${numeriErrati}`;
     } else {
       numeriIndovinati.push(askUser);
       console.log("i numeri indovinati " + numeriIndovinati);
       const numbersMatched = document.getElementById("numbers");
       numbersMatched.innerText = `Hai indovinato : ${numeriIndovinati}`;
+    }
+    if (numeriIndovinati.length < 5 && numeriIndovinati.length > 0) {
+      const totNumbersMatched = document.getElementById("tot-numbers");
+      totNumbersMatched.innerText = `Hai indovinato : ${numeriIndovinati.length} numeri`;
+    }
+    if (numeriErrati.length <= 5) {
+      const totWrongNumbers = document.getElementById("wrong-numbers");
+      totWrongNumbers.innerText = `Non hai indovinato : ${numeriErrati.length} numeri`;
     }
   }
 }
@@ -41,19 +52,23 @@ function timeLapsNumber() {
   const container = document.getElementById("numbers");
   if (max < 0) {
     clearInterval(timeSequence); // cancello il setInterval
-
     container.innerText = "Tocca a te!";
   } else {
     container.innerText = simonNumber[max];
   }
 }
+//******* / FUNZIONI *******//
 
-// creo array dove aggiungo 5 numeri casuali
+//******* VARIABILI *******/
 let numeriIndovinati = [];
 let numeriErrati = [];
 let simonNumber = [];
 let max = 5;
+const InputUser = setTimeout(askToUserSequenceNumbers, 30000);
+const timeSequence = setInterval(timeLapsNumber, 3000);
+//******* / VARIABILI *******/
 
+//******* CICLI *******/
 while (simonNumber.length < 5) {
   number = generateRandomNumber(1, 100);
   if (!simonNumber.includes(number)) {
@@ -67,7 +82,4 @@ for (let i = 0; i < simonNumber.length; i++) {
   const container = document.getElementById("numbers");
   container.innerText = simonNumber[i];
 }
-
-const InputUser = setTimeout(askToUserSequenceNumbers, 30000);
-
-const timeSequence = setInterval(timeLapsNumber, 3000);
+//******* / CICLI *******/
