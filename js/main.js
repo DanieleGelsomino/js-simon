@@ -34,7 +34,8 @@ function askToUserSequenceNumbers() {
       numeriIndovinati.push(askUser);
       console.log("i numeri indovinati " + numeriIndovinati);
       const numbersMatched = document.getElementById("numbers");
-      numbersMatched.innerText = `Hai indovinato : ${numeriIndovinati}`;
+      numbersMatched.innerText = `Hai indovinato : 
+      ${numeriIndovinati.join("-")}`;
     }
     if (numeriIndovinati.length < 5 && numeriIndovinati.length > 0) {
       const totNumbersMatched = document.getElementById("tot-numbers");
@@ -60,26 +61,33 @@ function timeLapsNumber() {
 //******* / FUNZIONI *******//
 
 //******* VARIABILI *******/
+
 let numeriIndovinati = [];
 let numeriErrati = [];
 let simonNumber = [];
 let max = 5;
-const InputUser = setTimeout(askToUserSequenceNumbers, 30000);
+
+const startGame = document.getElementById("start");
+const InputUser = setTimeout(askToUserSequenceNumbers, 20000);
 const timeSequence = setInterval(timeLapsNumber, 3000);
 //******* / VARIABILI *******/
 
-//******* CICLI *******/
-while (simonNumber.length < 5) {
-  number = generateRandomNumber(1, 100);
-  if (!simonNumber.includes(number)) {
-    simonNumber.push(number);
+//******* EVENTO AL CLICK *******//
+startGame.addEventListener("click", function () {
+  //******* CICLI *******/
+  while (simonNumber.length < 5) {
+    number = generateRandomNumber(1, 100);
+    if (!simonNumber.includes(number)) {
+      simonNumber.push(number);
+    }
   }
-}
 
-console.log(simonNumber);
+  console.log(simonNumber);
 
-for (let i = 0; i < simonNumber.length; i++) {
-  const container = document.getElementById("numbers");
-  container.innerText = simonNumber[i];
-}
-//******* / CICLI *******/
+  for (let i = 0; i < simonNumber.length; i++) {
+    const container = document.getElementById("numbers");
+    container.innerText = simonNumber[i];
+  }
+
+  //******* / CICLI *******/
+});

@@ -16,6 +16,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(188, 208, 213);
 }
 
 img {
@@ -27,8 +28,27 @@ h1 {
   font-size: 45px;
 }
 
+#start {
+  color: rgb(70, 115, 127);
+  margin: 20px auto;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: 2px solid rgb(70, 115, 127);
+}
+
+#start:hover {
+  cursor: pointer;
+  background-color: rgb(91, 149, 166);
+  border-color: rgb(91, 149, 166);
+  color: antiquewhite;
+}
+
 #numbers,
 #not-matched {
   color: brown;
-  font-size: 45px;
+  text-align: center;
+  font-size: 40px;
 }
