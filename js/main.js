@@ -18,22 +18,39 @@ function generateRandomNumber(min, max) {
 }
 
 function askToUserSequenceNumbers() {
-  const askUser = parseInt(
-    prompt("inserisci in ordine la sequenza dei numeri")
-  );
+  for (let x = 0; x < 5; x++) {
+    const askUser = parseInt(
+      prompt("inserisci in ordine la sequenza dei numeri")
+    );
+    if (!simonNumber.includes(askUser)) {
+      numeriErrati.push(askUser);
+      console.log("i numeri errati " + numeriErrati);
+      const numbersMatched = document.getElementById("not-matched");
+      numbersMatched.innerText = `Non hai indovinato : ${numeriErrati}`;
+    } else {
+      numeriIndovinati.push(askUser);
+      console.log("i numeri indovinati " + numeriIndovinati);
+      const numbersMatched = document.getElementById("numbers");
+      numbersMatched.innerText = `Hai indovinato : ${numeriIndovinati}`;
+    }
+  }
 }
 
 function timeLapsNumber() {
   max--;
-  if (max <= 0) {
+  const container = document.getElementById("numbers");
+  if (max < 0) {
     clearInterval(timeSequence); // cancello il setInterval
-    const container = document.getElementById("numbers");
+
     container.innerText = "Tocca a te!";
+  } else {
+    container.innerText = simonNumber[max];
   }
 }
 
 // creo array dove aggiungo 5 numeri casuali
-
+let numeriIndovinati = [];
+let numeriErrati = [];
 let simonNumber = [];
 let max = 5;
 
@@ -53,4 +70,4 @@ for (let i = 0; i < simonNumber.length; i++) {
 
 const InputUser = setTimeout(askToUserSequenceNumbers, 30000);
 
-const timeSequence = setInterval(timeLapsNumber, 2000);
+const timeSequence = setInterval(timeLapsNumber, 3000);

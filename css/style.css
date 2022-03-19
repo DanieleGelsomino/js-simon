@@ -24,9 +24,11 @@ img {
 
 h1 {
   color: rgb(70, 115, 127);
+  font-size: 45px;
 }
 
-#numbers {
+#numbers,
+#not-matched {
   color: brown;
   font-size: 45px;
 }
