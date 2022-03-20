@@ -66,10 +66,10 @@ let numeriIndovinati = [];
 let numeriErrati = [];
 let simonNumber = [];
 let max = 5;
-
+let timeSequence;
+let InputUser;
 const startGame = document.getElementById("start");
-const InputUser = setTimeout(askToUserSequenceNumbers, 20000);
-const timeSequence = setInterval(timeLapsNumber, 3000);
+
 //******* / VARIABILI *******/
 
 //******* EVENTO AL CLICK *******//
@@ -89,5 +89,7 @@ startGame.addEventListener("click", function () {
     container.innerText = simonNumber[i];
   }
 
+  InputUser = setTimeout(askToUserSequenceNumbers, 20000);
+  timeSequence = setInterval(timeLapsNumber, 3000);
   //******* / CICLI *******/
 });
