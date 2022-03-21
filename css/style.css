@@ -52,3 +52,8 @@ h1 {
   text-align: center;
   font-size: 40px;
 }
+
+#tot-numbers,
+#wrong-numbers {
+  text-align: center;
+}

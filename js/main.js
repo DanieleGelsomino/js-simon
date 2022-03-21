@@ -29,19 +29,17 @@ function askToUserSequenceNumbers() {
      */
     if (!simonNumber.includes(askUser)) {
       numeriErrati.push(askUser);
-      console.log("i numeri errati " + numeriErrati);
     } else {
       numeriIndovinati.push(askUser);
-      console.log("i numeri indovinati " + numeriIndovinati);
       const numbersMatched = document.getElementById("numbers");
       numbersMatched.innerText = `Hai indovinato : 
       ${numeriIndovinati.join("-")}`;
     }
-    if (numeriIndovinati.length < 5 && numeriIndovinati.length > 0) {
+    if (numeriIndovinati.length <= 5 && numeriIndovinati.length > 0) {
       const totNumbersMatched = document.getElementById("tot-numbers");
       totNumbersMatched.innerText = `Hai indovinato : ${numeriIndovinati.length} numeri`;
     }
-    if (numeriErrati.length <= 5) {
+    if (numeriErrati.length <= 5 && numeriErrati.length > 0) {
       const totWrongNumbers = document.getElementById("wrong-numbers");
       totWrongNumbers.innerText = `Non hai indovinato : ${numeriErrati.length} numeri`;
     }
@@ -88,8 +86,8 @@ startGame.addEventListener("click", function () {
     const container = document.getElementById("numbers");
     container.innerText = simonNumber[i];
   }
+  //******* / CICLI *******/
 
   InputUser = setTimeout(askToUserSequenceNumbers, 20000);
   timeSequence = setInterval(timeLapsNumber, 3000);
-  //******* / CICLI *******/
 });
